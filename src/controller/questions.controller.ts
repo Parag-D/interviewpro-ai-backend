@@ -4,8 +4,5 @@ import { QuestionService } from "../services/question.service";
 const questionService = new QuestionService();
 export const getQuestion = async (req: Request, res: Response, next: NextFunction) => {
     const questions = await questionService.getQuestions(req);
-
-    console.log(questions);
-
-    next(true)
+    next(questions)
 }

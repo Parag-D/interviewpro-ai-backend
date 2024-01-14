@@ -1,8 +1,8 @@
 export const PASSWORD_MIN_LENGTH = 8;
 
-export const MULTER_ALLOWED_FILE_EXTENSIONS = ['pdf'];
+export const MULTER_ALLOWED_FILE_EXTENSIONS = ['pdf', 'PDF'];
 
-export const MULTER_UPLOAD_FILE_MAX_SIZE = 1 * 1000 * 1000;
+export const MULTER_UPLOAD_FILE_MAX_SIZE = 8 * 1000 * 1000;
 
 export const AWS_ACCESS_KEY_ID = process.env.AWS_ACCESS_KEY_ID
 export const AWS_SECRET_ACCESS_KEY = process.env.AWS_SECRET_ACCESS_KEY

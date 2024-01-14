@@ -3,9 +3,10 @@ import { S3_BUCKET_NAME } from "../utils/constants";
 import { s3 } from "./s3";
 
 export const getSignedURLForPut = async (params: { fileName: string, folder: string, questionId: string }): Promise<string> => {
+    const urlKey = `${params.folder}/${params.fileName}`;
     const s3Params = {
         Bucket: S3_BUCKET_NAME,
-        Key: `${params.folder}/${params.fileName}`
+        Key: urlKey
     };
     return new Promise((resolve, reject) => {
         s3.getSignedUrl('putObject', s3Params, async (error, url) => {
@@ -14,7 +15,7 @@ export const getSignedURLForPut = async (params: { fileName: string, folder: str
             }
 
             //----move it to question repository----
-            await updateQuestionWithUserAnswers(params.questionId, url);
+            await updateQuestionWithUserAnswers(params.questionId, urlKey);
 
             resolve(url);
         });

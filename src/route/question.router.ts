@@ -3,4 +3,4 @@ import { getQuestion } from "../controller/questions.controller";
 
 export const questionRouter = express.Router();
 
-questionRouter.post("/get-questions", getQuestion);
+questionRouter.post("/get-questions/:questionId", getQuestion);

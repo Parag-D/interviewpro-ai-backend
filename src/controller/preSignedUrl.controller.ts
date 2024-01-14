@@ -1,12 +1,19 @@
-import { NextFunction, Request, Response } from "express";
+import { NextFunction, Response } from "express";
 import { getSignedURLForPut } from "../services/preSignedUrl.service";
 import { CustomRequest } from "../middleware/isLoggedIn";
 
 export const videoSignedUrl = async (req: CustomRequest, res: Response, next: NextFunction): Promise<void> => {
     const questionId = req.params.questionId;
-    const fileName = questionId + '.mp4';
+    if(!questionId) {
+        throw new Error("Question Id is not provided.");
+    }
+    const fileNameForVideo = questionId + '.webm';
+    const fileNameForAudio = questionId + '.wav';
     const folder = 'mock-test-answers';
-    const url = await getSignedURLForPut({fileName, folder, questionId});
 
-    next({url});
+    const video_url = await getSignedURLForPut({fileName: fileNameForVideo, folder, questionId});
+    const audio_url = await getSignedURLForPut({fileName: fileNameForAudio, folder, questionId});
+
+
+    next({video_url, audio_url});
 }

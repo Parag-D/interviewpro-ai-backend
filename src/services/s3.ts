@@ -33,4 +33,3 @@ export const uploadBufferToS3 = (params: S3UploadParams): Promise<boolean> => {
     });
 };
 s3.upload
-

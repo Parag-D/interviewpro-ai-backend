@@ -20,7 +20,7 @@ export const signAndReturnUserLoginToken = async (params: tokenSigningParams): P
     // const access_token = signJWT(tokenData, 200000);
     const access_token = jwt.sign(tokenData, jwtSecret, { expiresIn: 200000});
 
-    const tokens: ILoginToken = { access_token };
-
-    return tokens;
+    const token: ILoginToken = { access_token };
+    
+    return token;
 };

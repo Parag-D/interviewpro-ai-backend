@@ -10,7 +10,6 @@ export async function signup(req: Request, res: Response, next: NextFunction) {
 }
 
 export async function signin(req: Request, res: Response, next: NextFunction) {
-    console.log("sigin controller...")
     const token = await authService.signin(req);
     next(token)
 }

@@ -5,6 +5,7 @@ import { NextFunction, Request, Response } from "express";
 export interface CustomRequest extends Request {
     user?: {
         userId: string;
+        name: string;
         email: string;
     };
 }
@@ -20,7 +21,7 @@ const verifyToken = async (token: string): Promise<JwtPayload|undefined> => {
 }
 export const isLoggedIn = async (req: CustomRequest, res: Response, next: NextFunction) => {
     try {
-        console.log("hey")
+        console.log("isLoggedIn middleware")
         if (req.headers.authorization) {
             const token = req.headers.authorization.split(' ')[1];
             console.log("hey after token")
@@ -32,6 +33,7 @@ export const isLoggedIn = async (req: CustomRequest, res: Response, next: NextFu
     
             const reqUserParams = {
                 userId: tokenData['_id'],
+                name: tokenData['name'],
                 email: tokenData['email'],
             }
             req.user = reqUserParams;

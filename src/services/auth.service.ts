@@ -24,6 +24,7 @@ export class AuthService {
             }
     
             const response = {
+                _id: user._id,
                 name: user.name,
                 email: user.email,
                 token
@@ -60,6 +61,7 @@ export class AuthService {
             }
 
             const response = {
+                _id: isUser._id,
                 name: isUser.name,
                 email: isUser.email,
                 token
