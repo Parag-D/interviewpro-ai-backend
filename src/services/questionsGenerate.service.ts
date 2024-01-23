@@ -3,7 +3,7 @@ import { uploadBufferToS3 } from './s3';
 import axios from 'axios';
 import userModel from '../models/user.model';
 import questionsModel from '../models/questions.model';
-const mockModel = "http://localhost:5001/generate_question_and_audio";
+const mockModel = "http://ec2-65-2-124-86.ap-south-1.compute.amazonaws.com:5001/generate_question_and_audio";
 
 export async function textAndAudioGeneration(pdfBuffer: Buffer, userId: string) {
     try {
