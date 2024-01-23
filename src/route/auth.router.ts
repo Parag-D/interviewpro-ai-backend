@@ -6,6 +6,10 @@ import { isLoggedIn } from "../middleware/isLoggedIn";
 
 export const authRouter = express.Router();
 
+authRouter.get("/test", (_req, res) => {
+    res.send("Server is Running :)");
+});
+
 authRouter.post("/signup", signup);
 authRouter.post("/signin", signin);
 
