@@ -4,7 +4,6 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "install": "npm install",
     "start": "npx tsc -b && node dist/index.js",
     "build": "npx tsc -b",
     "dev": "nodemon src/index.ts",
