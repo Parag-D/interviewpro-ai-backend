@@ -3,10 +3,9 @@ import { uploadBufferToS3 } from './s3';
 import axios from 'axios';
 import userModel from '../models/user.model';
 import questionsModel from '../models/questions.model';
-const mockModel = "https://4d58-14-97-167-154.ngrok-free.app/generate_question_and_audio";
+const mockModel = "http://localhost:5001/generate_question_and_audio";
 
 export async function textAndAudioGeneration(pdfBuffer: Buffer, userId: string) {
-    console.log("readPdfAndConvertToJson")
     try {
         // Parse PDF content
         const pdfData = await pdf(pdfBuffer);
@@ -39,7 +38,6 @@ export async function textAndAudioGeneration(pdfBuffer: Buffer, userId: string) 
                 throw new Error("Didn't get pdfAudio from mockModel");
             }
             if (pdfAudio) {
-                console.log({ pdfAudio })
                 //----move it to question repository---
                 const questionsSaved = await questionsModel.insertMany({
                     userId,

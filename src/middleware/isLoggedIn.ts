@@ -21,12 +21,9 @@ const verifyToken = async (token: string): Promise<JwtPayload|undefined> => {
 }
 export const isLoggedIn = async (req: CustomRequest, res: Response, next: NextFunction) => {
     try {
-        console.log("isLoggedIn middleware")
         if (req.headers.authorization) {
             const token = req.headers.authorization.split(' ')[1];
-            console.log("hey after token")
             const tokenData = await verifyToken(token);
-            console.log("after tokenData")
             if (!tokenData) {
                 throw new Error('Invalid token');
             }
