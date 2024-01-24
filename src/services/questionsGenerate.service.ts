@@ -3,7 +3,10 @@ import { uploadBufferToS3 } from './s3';
 import axios from 'axios';
 import userModel from '../models/user.model';
 import questionsModel from '../models/questions.model';
-const mockModel = "http://ec2-65-2-124-86.ap-south-1.compute.amazonaws.com:5001/generate_question_and_audio";
+import { MOCK_AI_SERVER_URL } from '../utils/constants';
+// const mockModel = "http://ec2-65-2-124-86.ap-south-1.compute.amazonaws.com:5001/generate_question_and_audio";
+const mockModel = `${MOCK_AI_SERVER_URL}/generate_question_and_audio`;
+
 
 export async function textAndAudioGeneration(pdfBuffer: Buffer, userId: string) {
     try {
@@ -34,10 +37,10 @@ export async function textAndAudioGeneration(pdfBuffer: Buffer, userId: string) 
             // get the audio and questions
             const pdfAudio = await axios.post(mockModel, pdftextJson, { headers });
 
-            if(!pdfAudio) {
+            if(!pdfAudio.data) {
                 throw new Error("Didn't get pdfAudio from mockModel");
             }
-            if (pdfAudio) {
+            if (pdfAudio.data) {
                 //----move it to question repository---
                 const questionsSaved = await questionsModel.insertMany({
                     userId,

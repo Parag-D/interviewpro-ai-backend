@@ -7,3 +7,4 @@ export const myProfileController = async (req: CustomRequest, res: Response, nex
 
     next(profile);
 }
+

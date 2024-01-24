@@ -4,6 +4,7 @@ import { authRouter } from './route/auth.router';
 // import { pdfRouter } from './route/pdfToText.router';
 import { questionRouter } from './route/question.router';
 import { uploadRouter } from './route/upload.router';
+import { analysisRouter } from './route/analysis.router';
 const cors = require("cors");
 
 export const app = express();
@@ -16,6 +17,7 @@ app.use("/auth", authRouter);
 app.use("/question", questionRouter);
 // app.use("/pdf", pdfRouter);
 app.use("/upload", uploadRouter);
+app.use("/analysis", analysisRouter);
 
 
 app.use((data:any, req:any, res:any, next:any) => {

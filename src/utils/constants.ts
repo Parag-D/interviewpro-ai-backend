@@ -4,6 +4,9 @@ export const MULTER_ALLOWED_FILE_EXTENSIONS = ['pdf', 'PDF'];
 
 export const MULTER_UPLOAD_FILE_MAX_SIZE = 8 * 1000 * 1000;
 
+export const MOCK_AI_SERVER_URL = process.env.MOCK_AI_SERVER_URL;
+
+export const AWS_URL = process.env.AWS_URL;
 export const AWS_ACCESS_KEY_ID = process.env.AWS_ACCESS_KEY_ID
 export const AWS_SECRET_ACCESS_KEY = process.env.AWS_SECRET_ACCESS_KEY
 export const AWS_REGION = process.env.AWS_REGION
