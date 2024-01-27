@@ -19,7 +19,7 @@ export const interviewAnalysis = async (questionId: String) => {
             throw new Error("video answer is not found");
         }
 
-        const payload = { "s3_video_url" : `${AWS_URL}/${video_url}`, "questionId": questionId };
+        const payload = { "s3_video_url" : `${AWS_URL}/${video_url}`, "questionId": questionId, "questions": questions.questions };
 
         console.log({payload});
         const response = await axios.post(analysisURL, payload);
