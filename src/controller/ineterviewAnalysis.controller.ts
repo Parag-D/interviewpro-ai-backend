@@ -3,6 +3,7 @@ import { interviewAnalysis, saveInterviewFeedback } from "../services/interviewA
 import { CustomRequest } from "../middleware/isLoggedIn";
 
 export const interviewAnalysisController = async (req: CustomRequest, res: Response, next: NextFunction) => {
+    console.log("Inside interview analysis...");
     if(!req.params.questionId) {
         throw new Error("Question Id is not provided.");
     }
@@ -14,6 +15,7 @@ export const interviewAnalysisController = async (req: CustomRequest, res: Respo
         throw new Error("feedback not saved");
     }
 
+    console.log("Successfully saved feedback");
     next(feedback);
 }
 

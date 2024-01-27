@@ -20,8 +20,11 @@ export const interviewAnalysis = async (questionId: String) => {
         }
 
         const payload = { "s3_video_url" : `${AWS_URL}/${video_url}`, "questionId": questionId };
+
+        console.log({payload});
         const response = await axios.post(analysisURL, payload);
 
+        console.log({feedback: response});
         if(!response.data) {
             throw new Error("Not able to send Video Url to the model");
         }

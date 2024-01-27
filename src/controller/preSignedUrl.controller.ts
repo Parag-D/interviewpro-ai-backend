@@ -14,6 +14,6 @@ export const videoSignedUrl = async (req: CustomRequest, res: Response, next: Ne
     const video_url = await getSignedURLForPut({fileName: fileNameForVideo, folder, questionId});
     const audio_url = await getSignedURLForPut({fileName: fileNameForAudio, folder, questionId});
 
-
+    console.log({video_url, audio_url});
     next({video_url, audio_url});
 }
